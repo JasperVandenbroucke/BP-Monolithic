@@ -6,5 +6,6 @@ namespace ECommerceApi.Services.Products
     {
         Task<List<Product>> GetAllProducts();
         Task<Product> GetProductById(int id);
+        Task<List<Product>> GetProductsByIds(List<int> ids);
     }
 }

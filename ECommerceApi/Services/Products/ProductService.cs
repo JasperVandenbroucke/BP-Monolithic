@@ -17,5 +17,12 @@ namespace ECommerceApi.Services.Products
         {
             return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
         }
+
+        public async Task<List<Product>> GetProductsByIds(List<int> ids)
+        {
+            return await _context.Products
+                .Where(p => ids.Contains(p.Id))
+                .ToListAsync();
+        }
     }
 }
