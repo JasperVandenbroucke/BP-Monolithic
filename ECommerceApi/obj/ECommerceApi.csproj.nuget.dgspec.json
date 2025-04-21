@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\ECommerceApi.csproj": {}
+    "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\ECommerceApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\ECommerceApi.csproj": {
+    "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\ECommerceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
+        "projectUniqueName": "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
         "projectName": "ECommerceApi",
-        "projectPath": "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
+        "projectPath": "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
         "packagesPath": "C:\\Users\\jaspe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\obj\\",
+        "outputPath": "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

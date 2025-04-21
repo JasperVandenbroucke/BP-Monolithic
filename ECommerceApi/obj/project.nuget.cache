@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ht4MRUz1qeE=",
+  "dgSpecHash": "XU+9WzO9TR0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jaspe\\MicroServices\\BP-Ecommerce-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
+  "projectFilePath": "C:\\Users\\jaspe\\MicroServices\\BP-Monolithic\\ECommerceApi\\ECommerceApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jaspe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\jaspe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
