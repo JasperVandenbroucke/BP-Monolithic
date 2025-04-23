@@ -14,7 +14,7 @@ namespace ECommerceApi.Auth
             string secretKey = configuration["Jwt:Secret"];
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             // Describe the content of the token
             var tokenDescriptor = new SecurityTokenDescriptor
