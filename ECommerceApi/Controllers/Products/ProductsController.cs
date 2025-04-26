@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using ECommerceApi.Models.Dtos.Products;
 using ECommerceApi.Services.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceApi.Controllers.Products
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
