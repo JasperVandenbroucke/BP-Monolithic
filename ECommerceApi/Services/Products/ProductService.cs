@@ -24,5 +24,10 @@ namespace ECommerceApi.Services.Products
                 .Where(p => ids.Contains(p.Id))
                 .ToListAsync();
         }
+
+        public async Task<bool> DoesProductExist(int productId)
+        {
+            return await _context.Products.AnyAsync(p => p.Id == productId);
+        }
     }
 }
