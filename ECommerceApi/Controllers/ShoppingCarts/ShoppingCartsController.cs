@@ -43,9 +43,6 @@ namespace ECommerceApi.Controllers.ShoppingCarts
         public async Task<ActionResult> AddProductToCart(int productId)
         {
             Console.WriteLine("--> Adding a product...");
-            if (!await _productService.DoesProductExist(productId))
-                return BadRequest($"No product found with id {productId}");
-
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
                 return Unauthorized("UserId kon niet worden bepaald uit JWT token");
