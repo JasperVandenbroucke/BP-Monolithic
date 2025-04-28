@@ -14,6 +14,8 @@ namespace ECommerceApi.Data
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +28,11 @@ namespace ECommerceApi.Data
                 .HasOne(si => si.Product)
                 .WithMany()
                 .HasForeignKey(si => si.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(oi => oi.Order)
+                .WithMany(o => o.Items)
+                .HasForeignKey(oi => oi.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

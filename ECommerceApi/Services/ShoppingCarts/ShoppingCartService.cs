@@ -32,6 +32,9 @@ namespace ECommerceApi.Services.ShoppingCarts
 
         public async Task AddProductToCart(int userId, int productId)
         {
+            if (!await _context.Products.AnyAsync(p => p.Id == productId))
+                throw new Exception($"No product found with id {productId}");
+
             var cart = await GetCart(userId);
             if (cart == null)
             {
@@ -47,6 +50,16 @@ namespace ECommerceApi.Services.ShoppingCarts
             };
             _context.ShoppingCartItems.Add(cartItem);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveCartOfUser(int userId)
+        {
+            var cart = await _context.ShoppingCarts.FirstOrDefaultAsync(c => c.UserId == userId);
+            if (cart != null)
+            {
+                _context.ShoppingCarts.Remove(cart);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

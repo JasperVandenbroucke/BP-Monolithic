@@ -6,5 +6,6 @@ namespace ECommerceApi.Services.ShoppingCarts
     {
         Task<ShoppingCart> GetCart(int userId);
         Task AddProductToCart(int userId, int productId);
+        Task RemoveCartOfUser(int userId);
     }
 }

@@ -1,5 +1,6 @@
 using ECommerceApi.Auth;
 using ECommerceApi.Data;
+using ECommerceApi.Services.Orders;
 using ECommerceApi.Services.Products;
 using ECommerceApi.Services.ShoppingCarts;
 using ECommerceApi.Services.Users;
@@ -72,6 +73,7 @@ builder.Services.AddSingleton<JwtTokenProvider>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
