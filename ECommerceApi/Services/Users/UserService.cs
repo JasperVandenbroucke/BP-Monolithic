@@ -1,7 +1,8 @@
 ﻿using ECommerceApi.Auth;
 using ECommerceApi.Data;
+using ECommerceApi.Models;
+using ECommerceApi.Models.Dtos.Users;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 
 namespace ECommerceApi.Services.Users
 {
@@ -13,11 +14,24 @@ namespace ECommerceApi.Services.Users
 
         public async Task<string> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username && _passwordHasher.VerifyPassword(password, u.PasswordHash));
-            if (user is null) throw new Exception("Unauthorized - No user with the given credentials");
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username) ??
+                throw new Exception("Unauthorized - No user with the given username");
 
-            string token = _tokenProvider.CreateToken(user);
-            return token;
+            bool passwordIsValid = _passwordHasher.VerifyPassword(password, user.PasswordHash);
+            if (!passwordIsValid)
+                throw new Exception("Unauthorized - Invalid password");
+
+            return _tokenProvider.CreateToken(user);
+        }
+
+        public async Task Registreren(LoginDto loginDto)
+        {
+            if (await _context.Users.AnyAsync(u => u.Username == loginDto.Username))
+                throw new Exception("Username already exists.");
+
+            var hashedPwd = _passwordHasher.HashPassword(loginDto.Password);
+            _context.Users.Add(new User() { Username = loginDto.Username, PasswordHash = hashedPwd });
+            await _context.SaveChangesAsync();
         }
     }
 }

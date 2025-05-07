@@ -61,10 +61,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Use an InMemory db
+// Use a database
+//Console.WriteLine("--> Using a SQL database");
+//Console.WriteLine($"--> Database address: {builder.Configuration.GetConnectionString("MonoSQLConnection")}");
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(
+//        builder.Configuration.GetConnectionString("MonoSQLConnection")
+//    )
+//);
 Console.WriteLine("--> Using an InMemory db");
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("ECommerceDatabase")
+ options.UseInMemoryDatabase("ECommerceDatabase")
 );
 
 builder.Services.AddSingleton<PasswordHasher>();
@@ -92,6 +99,6 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
 
-await PrepDb.PrepPopulation(app, app.Environment.IsProduction());
+await PrepDb.PrepPopulation(app);
 
 app.Run();

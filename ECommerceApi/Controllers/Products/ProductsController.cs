@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECommerceApi.Models;
 using ECommerceApi.Models.Dtos.Products;
 using ECommerceApi.Services.Products;
 using Microsoft.AspNetCore.Authorization;
@@ -38,6 +39,21 @@ namespace ECommerceApi.Controllers.Products
             if (product == null)
                 return NotFound($"No product found with id {id}");
             return Ok(_mapper.Map<ProductReadDto>(product));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ProductReadDto>> CreateProduct(ProductCreateDto productCreateDto)
+        {
+            Console.WriteLine("--> Adding a product...");
+            try
+            {
+                await _service.CreateProduct(productCreateDto);
+                return Ok("Product successfully created");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Failed to create product");
+            }
         }
     }
 }
