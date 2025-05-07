@@ -23,5 +23,19 @@ namespace ECommerceApi.Controllers.Users
                 return BadRequest($"Could not login: {ex.Message}");
             }
         }
+
+        [HttpPost("registeren")]
+        public async Task<ActionResult> Registreren(LoginDto loginDto)
+        {
+            try
+            {
+                await _service.Registreren(loginDto);
+                return Ok("Succesfully registered a new user");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Could not register new user: {ex.Message}");
+            }
+        }
     }
 }

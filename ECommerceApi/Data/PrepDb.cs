@@ -1,30 +1,29 @@
 ﻿using ECommerceApi.Auth;
 using ECommerceApi.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceApi.Data
 {
     public class PrepDb
     {
-        public static async Task PrepPopulation(IApplicationBuilder app, bool isProd)
+        public static async Task PrepPopulation(IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
-            await SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>(), serviceScope.ServiceProvider.GetService<PasswordHasher>(), isProd);
+            await SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>(), serviceScope.ServiceProvider.GetService<PasswordHasher>());
         }
 
-        private static async Task SeedData(AppDbContext context, PasswordHasher passwordHasher, bool isProd)
+        private static async Task SeedData(AppDbContext context, PasswordHasher passwordHasher)
         {
-            //if (isProd)
+            //Console.WriteLine("--> Attempting to apply migrations...");
+            //try
             //{
-            //    Console.WriteLine("--> Attempting to apply migrations...");
-            //    try
-            //    {
-            //        context.Database.Migrate();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"--> Could not run migrations: {ex.Message}");
-            //    }
+            //    context.Database.Migrate();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"--> Could not run migrations: {ex.Message}");
+            //    return;
             //}
 
             if (!context.Products.Any())
